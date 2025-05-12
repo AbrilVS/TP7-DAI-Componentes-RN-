@@ -7,13 +7,19 @@ const imgLocal=require('./assets/fondo3.png');
 export default function App() {
   const [message, setMessage] = useState("");
   const [presion, setPresion] = useState(false);
+  const [isPressed, setIsPressed] = useState(false);
   const alertar = () => Alert.alert("Mensaje enviado", message );
-  const presionar = () => {setPresion = !presion}
+  
+  const presionar = () => {
+
+    
+  
+  }
 
   return (
     <SafeAreaView style={styles.container}>
-      {/* ESTILAR StatusBar */}
-      <StatusBar Style={styles.status} />
+      
+      <StatusBar  backgroundColor="#61dafb"  />
         <ImageBackground source = {imgLocal} style={styles.background}>
           <View style={styles.card}> 
             <Image source={require('./assets/perfil.png')} style={styles.avatar} />
@@ -32,7 +38,9 @@ export default function App() {
             <Text style={styles.contactText}>Contactar</Text>
           </TouchableOpacity>
           
-          <Pressable onPress={presionar}>
+          <Pressable  
+        onPressIn={() => setIsPressed(true)}
+        onPressOut={() => setIsPressed(false)}>
             <Text style={styles.portfolio}>Ver Perfil</Text>
           </Pressable>
 
@@ -48,9 +56,6 @@ const styles = StyleSheet.create({
     width:500,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  status:{
-    backgroundColor:"#61dafb",
   },
   card:{
     backgroundColor: '#fff',
@@ -68,7 +73,7 @@ const styles = StyleSheet.create({
   name:{
     fontSize: 22,
     fontWeight: 'bold',
-    color: presion ? 'blue' : 'red',
+    color: '#333',
   },
   title:{
     fontSize: 16,
